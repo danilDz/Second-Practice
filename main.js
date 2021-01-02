@@ -4,19 +4,29 @@ const numberOfFilms=+prompt('How many films did you watch?');
 
 let personalMovieDB={
     count:numberOfFilms,
-    movies:[]
+    movies:{},
+    actors:{},
+    genres:[],
+    privat:false
 };
 
 let movie='';
+let rate;
 
 //First version:
 
 for (let i = 1; i<=numberOfFilms;i++){
     movie=prompt('What film did you watch last time?');
     if (movie=='' || movie.length>50) {
+        alert('Write a name of film again!');
         movie=prompt('What film did you watch last time?');
     }
-    personalMovieDB.movies[i-1]=movie;
+    rate=prompt('How would you rate it?');
+    if (rate=='' || +rate>10 || +rate<0 || typeof(+rate)!=Number){
+        alert('Write a rate of film again!');
+        rate=prompt('How would you rate it?');
+    }
+    personalMovieDB.movies[movie]=rate;
 }
 
 
@@ -27,9 +37,15 @@ for (let i = 1; i<=numberOfFilms;i++){
 // while(k<=numberOfFilms){
 //     movie=prompt('What film did you watch last time?');
 //     if (movie=='' || movie.length>50) {
-//          movie=prompt('What film did you watch last time?');
+//         alert('Write a name of film again!');
+//         movie=prompt('What film did you watch last time?');
 //     }
-//     personalMovieDB.movies[k-1]=movie;
+//     rate=prompt('How would you rate it?');
+//     if (rate=='' || +rate>10 || +rate<0 || typeof(+rate)!=Number){
+//         alert('Write a rate of film again!');
+//         rate=prompt('How would you rate it?');
+//     }
+//     personalMovieDB.movies[movie]=rate;
 //     k++;
 // }
 
@@ -41,9 +57,15 @@ for (let i = 1; i<=numberOfFilms;i++){
 // do{
 //     movie=prompt('What film did you watch last time?');
 //     if (movie=='' || movie.length>50) {
+//         alert('Write a name of film again!');
 //         movie=prompt('What film did you watch last time?');
 //     }
-//     personalMovieDB.movies[k-1]=movie;
+//     rate=prompt('How would you rate it?');
+//     if (rate=='' || +rate>10 || +rate<0 || typeof(+rate)!=Number){
+//         alert('Write a rate of film again!');
+//         rate=prompt('How would you rate it?');
+//     }
+//     personalMovieDB.movies[movie]=rate;
 //     k++;
 // } while(k<=numberOfFilms);
 
